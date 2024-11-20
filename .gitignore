@@ -1,1 +1,10 @@
+# Virtual environment
 w3_env/
+# Ignore environment files
+.env
+*.env
+.venv/
+
+# Python bytecode
+__pycache__/
+*.pyc
