@@ -184,4 +184,4 @@ if __name__ == "__main__":
     destination_service.add_destination("Paris", "Beautiful city of lights", "France")
     destination_service.add_destination("Tokyo", "Vibrant metropolitan city", "Japan")
 
-    app.run(debug=True)
+    app.run(debug=True, port=5002)
