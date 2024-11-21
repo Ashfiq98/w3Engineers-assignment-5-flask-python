@@ -10,7 +10,7 @@ app = Flask(__name__)
 api = Api(
     app,
     version="1.0",
-    title="Travel API",
+    title="Destination",
     description="Travel API Microservices",
     doc="/swagger",  # Custom Swagger UI endpoint
     security='BearerAuth'  # Add security definitions
@@ -63,67 +63,6 @@ destination_model = api.model(
 )
 
 
-# User Registration Route
-@user_ns.route("/register")
-class UserRegistration(Resource):
-    @api.expect(user_model)
-    def post(self):
-        """Register a new user"""
-        try:
-            data = request.json
-            user = user_service.register_user(
-                data["name"], data["email"], data["password"]
-            )
-            return {"message": "User registered successfully"}, 201
-        except ValueError as e:
-            return {"error": str(e)}, 400
-
-
-@user_ns.route("/login")
-class UserLogin(Resource):
-    @api.expect(login_model)  # Use the login_model here
-    def post(self):
-        """Authenticate user and get token"""
-        try:
-            data = request.json
-            token = user_service.login_user(data["email"], data["password"])
-            return {"token": token}, 200
-        except ValueError as e:
-            return {"error": str(e)}, 401
-
-
-# User Profile Route
-@user_ns.route("/profile")
-class UserProfile(Resource):
-    def get(self):
-        """Get user profile"""
-        token = request.headers.get("Authorization")
-        if not token or not token.startswith("Bearer "):
-            return {"error": "Authorization token required (format: Bearer <token>)"}, 401
-
-        token = token.split(" ")[1]  # Extract the token part
-
-        try:
-            # Verify the token
-            payload = AuthService.verify_token(token)
-            if not payload:
-                return {"error": "Invalid or expired token"}, 401
-
-            # Retrieve user profile using the email from the token
-            email = payload.get("email")
-            if not email:
-                return {"error": "Email missing in token payload"}, 401
-
-            profile = user_service.get_user_profile(email)
-            return profile, 200
-
-        except ValueError as e:
-            return {"error": str(e)}, 404
-        except Exception as e:
-            print("Unexpected error in /profile:", e)  # Debug log for unexpected errors
-            return {"error": "Internal Server Error"}, 500
-
-
 # Destination List Route
 @destination_ns.route("")
 class DestinationList(Resource):
@@ -135,14 +74,12 @@ class DestinationList(Resource):
     @api.expect(destination_model)
     def post(self):
         """Add a new destination (Admin only)"""
-        auth_header = request.headers.get("Authorization")
-        
+        auth_header = request.headers.get("Authorization")   
         # If the header is missing or doesn't start with 'Bearer', return an error
-        if not auth_header or not auth_header.startswith("Bearer "):
+        if not auth_header:
             return {"error": "Token required"}, 401
-        
         # Extract the token from the Authorization header (after 'Bearer ')
-        token = auth_header.split(" ")[1]
+        token = auth_header
 
         # Check if the admin access is valid
         if not AuthService.check_admin_access(token):
@@ -176,12 +113,6 @@ class DestinationResource(Resource):
 
 if __name__ == "__main__":
     # Seed some initial data for testing
-    user_service.register_user(
-        "Admin User", "admin@travel.com", "AdminPass123", "Admin"
-    )
-    user_service.register_user("Regular User", "user@travel.com", "UserPass123")
-
-    destination_service.add_destination("Paris", "Beautiful city of lights", "France")
-    destination_service.add_destination("Tokyo", "Vibrant metropolitan city", "Japan")
-
+    destination_service.add_destination('Paris', 'Beautiful city of lights', 'France')
+    destination_service.add_destination('Tokyo', 'Vibrant metropolitan city', 'Japan')
     app.run(debug=True, port=5002)
