@@ -1,7 +1,0 @@
-flask
-flask-restx
-werkzeug
-bcrypt
-jwt
-marshmallow
-PyJWT

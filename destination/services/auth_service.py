@@ -68,4 +68,5 @@ class AuthService:
         :return: Boolean indicating if the user is an admin
         """
         payload = AuthService.verify_token(token)
-        return payload and payload.get('role') == 'Admin'
+        print(payload.get('role'))
+        return payload and payload.get('role') == 'admin'

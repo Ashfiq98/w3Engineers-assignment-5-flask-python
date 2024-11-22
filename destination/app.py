@@ -80,6 +80,7 @@ class DestinationList(Resource):
             return {"error": "Token required"}, 401
         # Extract the token from the Authorization header (after 'Bearer ')
         token = auth_header
+        # print(token)
 
         # Check if the admin access is valid
         if not AuthService.check_admin_access(token):
@@ -102,7 +103,7 @@ class DestinationResource(Resource):
         """Delete a destination (Admin only)"""
         token = request.headers.get("Authorization")
         if not AuthService.check_admin_access(token):
-            return {"error": "Admin access required"}, 403
+            return {"error": "Admin access required.."}, 403
 
         try:
             destination_service.delete_destination(dest_id)

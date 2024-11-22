@@ -1,0 +1,14 @@
+{
+    "admin@travel.com": {
+        "name": "Admin User",
+        "email": "admin@travel.com",
+        "password": "$2b$12$bvM/4z6fbmMKt8jtS8qs5uxFIfw3a3QEx5hky3cbQ8Nw3zHIpQP/i",
+        "role": "Admin"
+    },
+    "user@travel.com": {
+        "name": "Regular User",
+        "email": "user@travel.com",
+        "password": "$2b$12$4/J625TjOaZjwfj1vOZQHOvT6xjmC2VHpHrnkaxfdAQVjM9W3Tq2W",
+        "role": "User"
+    }
+}
