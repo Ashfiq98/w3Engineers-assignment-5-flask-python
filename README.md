@@ -38,10 +38,10 @@ cd w3Engineers-assignment-5-flask-python
 
 2. Set up virtual environment (recommended):
 ```bash
-python -m venv venv
+python -m env_name venv
 ```
 ```bash
-source venv/bin/activate  # For Unix/macOS
+source env_name/bin/activate  # For Unix/macOS
 ```
 ```bash
 venv\Scripts\activate     # For Windows
