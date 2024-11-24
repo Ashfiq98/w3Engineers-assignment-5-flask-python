@@ -27,7 +27,7 @@ class UserService:
                 {email: user.__dict__ for email, user in self.users.items()}, file, indent=4
             )
 
-    def register_user(self, name, email, password, role="User"):
+    def register_user(self, name, email, password, role="user"):
         """Register a new user."""
         # Validate inputs
         if not validate_email(email):
@@ -76,4 +76,3 @@ class UserService:
             "email": user.email,
             "role": user.role,
         }
-

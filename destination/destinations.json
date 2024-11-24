@@ -1,0 +1,20 @@
+{
+    "2": {
+        "id": 2,
+        "name": "New York",
+        "description": "Big Apple",
+        "location": "USA"
+    },
+    "3": {
+        "id": 3,
+        "name": "s",
+        "description": "s",
+        "location": "s"
+    },
+    "5": {
+        "id": 5,
+        "name": "string 2",
+        "description": "string 2",
+        "location": "string 2"
+    }
+}

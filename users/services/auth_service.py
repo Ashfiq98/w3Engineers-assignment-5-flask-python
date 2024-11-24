@@ -14,15 +14,19 @@ class AuthService:
     SECRET_KEY = os.getenv('JWT_Secret_Key', 'fallback_secret')  # Fallback for safety during testing
 
     @staticmethod
-    def generate_token(user):
+    def generate_token(user, exp_minutes=120):
         """
         Generate JWT token for the user.
         :param user: An object or dict with 'email' and 'role' attributes
+        :param exp_minutes: Expiration time in minutes (default is 120 minutes)
         """
         payload = {
-            'email': user.email,
-            'role': user.role,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=2)
+            # 'email': user.email,
+            # 'role': user.role,
+            # 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=2)
+            'email': user.get('email') if isinstance(user, dict) else user.email,
+            'role': user.get('role') if isinstance(user, dict) else user.role,
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=exp_minutes)
         }
         return jwt.encode(payload, AuthService.SECRET_KEY, algorithm='HS256')
 

@@ -20,8 +20,8 @@ class AuthService:
         :param user: An object or dict with 'email' and 'role' attributes
         """
         payload = {
-            'email': user.email,
-            'role': user.role,
+            'email': user.get('email') if isinstance(user, dict) else user.email,
+            'role': user.get('role') if isinstance(user, dict) else user.role,
             'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=2)
         }
         return jwt.encode(payload, AuthService.SECRET_KEY, algorithm='HS256')
@@ -68,4 +68,4 @@ class AuthService:
         :return: Boolean indicating if the user is an admin
         """
         payload = AuthService.verify_token(token)
-        return payload and payload.get('role') == 'Admin'
+        return payload and payload.get('role') == 'admin'

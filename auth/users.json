@@ -52,5 +52,8 @@
         "email": "test1732389445.7987597@example.com",
         "password": "$2b$12$ibBuq2F6wOPSvEM.DOB8oOxzdYgvn7pRSGPi1DDYZ72bdmRFX9I/6",
         "role": "user"
-    }
-}
+    },
+    "testuser@example.com": {
+        "name": "Test User",
+        "email": "testuser@example.com",
+        "password": 
