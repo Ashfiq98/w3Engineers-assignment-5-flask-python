@@ -31,13 +31,19 @@ A Flask-based Travel API system implementing a microservices architecture with r
 1. Clone the repository:
 ```bash
 git clone https://github.com/Ashfiq98/w3Engineers-assignment-5-flask-python.git
+```
+```bash
 cd w3Engineers-assignment-5-flask-python
 ```
 
 2. Set up virtual environment (recommended):
 ```bash
 python -m venv venv
+```
+```bash
 source venv/bin/activate  # For Unix/macOS
+```
+```bash
 venv\Scripts\activate     # For Windows
 ```
 
@@ -52,21 +58,27 @@ Start each service in a separate terminal:
 
 1. Authentication Service:
 ```bash
-cd authentication_service
+cd auth
+```
+```bash
 python app.py
 # Access Swagger UI at http://localhost:5001/swagger
 ```
 
 2. Destination Service:
 ```bash
-cd destination_service
+cd destination
+```
+```bash
 python app.py
 # Access Swagger UI at http://localhost:5002/swagger
 ```
 
 3. User Service:
 ```bash
-cd user_service
+cd users
+```
+```bash
 python app.py
 # Access Swagger UI at http://localhost:5003/swagger
 ```
@@ -78,14 +90,22 @@ Each microservice has its own test suite located in its respective `tests` folde
 ```bash
 # Run tests for Authentication Service
 cd auth
+```
+```bash
 pytest tests/
-
+```
+```bash
 # Run tests for Destination Service
 cd destination
+```
+```bash
 pytest tests/
-
+```
+```bash
 # Run tests for User Service
 cd users
+```
+```bash
 pytest tests/
 ```
 
