@@ -47,7 +47,7 @@ source venv/bin/activate  # For Unix/macOS
 venv\Scripts\activate     # For Windows
 ```
 
-3. Install dependencies:
+3. Install dependencies (Open terminal for each microservice (recommended))
 
 ```bash
 cd auth
@@ -68,7 +68,7 @@ Start each service in a separate terminal:
 
 1. Authentication Service:
 ```bash
-cd auth
+cd auth #if not inside auth folder
 ```
 ```bash
 python app.py
@@ -77,7 +77,7 @@ python app.py
 
 2. Destination Service:
 ```bash
-cd destination
+cd destination #if not inside destination folder
 ```
 ```bash
 python app.py
@@ -86,7 +86,7 @@ python app.py
 
 3. User Service:
 ```bash
-cd users
+cd users #if not inside users folder
 ```
 ```bash
 python app.py
@@ -99,21 +99,21 @@ Each microservice has its own test suite located in its respective `tests` folde
 
 ```bash
 # Run tests for Authentication Service
-cd auth
+cd auth #if not inside auth folder
 ```
 ```bash
 pytest tests/
 ```
 ```bash
 # Run tests for Destination Service
-cd destination
+cd destination #if not inside destination folder
 ```
 ```bash
 pytest tests/
 ```
 ```bash
 # Run tests for User Service
-cd users
+cd users #if not inside users folder
 ```
 ```bash
 pytest tests/
@@ -152,8 +152,8 @@ Each service exposes its own Swagger UI documentation:
 
 ### User Service (Port 5003)
 - POST /register - Register new user
-- POST /login - User login
-- GET /profile - View user profile
+- POST /login - User login (Get token & use where authorization needed )
+- GET /profile - View user profile 
 - GET /users - List all users (Admin only)
 
 ## Security Features
