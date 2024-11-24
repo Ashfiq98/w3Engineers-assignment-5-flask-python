@@ -4,3 +4,4 @@ werkzeug
 bcrypt
 jwt
 marshmallow
+python-dotenv==1.0.0

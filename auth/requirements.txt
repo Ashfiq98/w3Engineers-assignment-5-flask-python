@@ -5,3 +5,4 @@ bcrypt
 jwt
 marshmallow
 PyJWT
+python-dotenv==1.0.0

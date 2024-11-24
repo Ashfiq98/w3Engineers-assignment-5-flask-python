@@ -48,7 +48,17 @@ venv\Scripts\activate     # For Windows
 ```
 
 3. Install dependencies:
+
 ```bash
+cd auth
+pip install -r requirements.txt
+```
+```bash
+cd destination
+pip install -r requirements.txt
+```
+```bash
+cd users
 pip install -r requirements.txt
 ```
 
