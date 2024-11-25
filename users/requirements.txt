@@ -5,3 +5,7 @@ bcrypt
 jwt
 marshmallow
 python-dotenv==1.0.0
+pytest==8.3.3
+coverage
+pytest-cov
+Flask-Testing

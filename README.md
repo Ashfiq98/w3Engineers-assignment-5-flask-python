@@ -118,6 +118,31 @@ cd users #if not inside users folder
 ```bash
 pytest tests/
 ```
+## Test Coverage
+
+Each microservice has its own test suite located in its respective `tests` folder. To run tests:
+
+```bash
+# Run tests for Authentication Service
+cd auth #if not inside auth folder
+```
+```bash
+pytest --cov=tests/
+```
+```bash
+# Run tests for Destination Service
+cd destination #if not inside destination folder
+```
+```bash
+pytest --cov=tests/
+```
+```bash
+# Run tests for User Service
+cd users #if not inside users folder
+```
+```bash
+pytest --cov=tests/
+```
 
 ## Default User Credentials
 
